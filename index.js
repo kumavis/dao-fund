@@ -1,10 +1,8 @@
 var hg = require('mercury')
 var render = require('./render.js')
-var WeiFund = require('./weifund.js')
+var DaoFund = require('./dao-fund.js')
 var Campaign = require('./lib/campaign.js')
-require('./config.js')(WeiFund)
 var web3 = global.web3
-
 
 app = App()
 campaignStore = []
@@ -13,12 +11,9 @@ loadInitialCampaigns()
 
 hg.app(document.body, app, render)
 
-// debug
-w = WeiFund
-
 
 function App() {
-  var state = hg.state({
+  return hg.state({
     campaigns: hg.array([]),
     showForm: hg.value(false),
     newCampaign: hg.value(null),
@@ -38,7 +33,7 @@ function App() {
     var formElement = event.target.parentNode.parentNode
     var data = parseForm(formElement)
 
-    WeiFund.contract.newCampaign(
+    DaoFund.contract.newCampaign(
       data.title,
       data.website,
       data.video,
@@ -53,18 +48,14 @@ function App() {
       },
     function(){
 
-      debugger
-
     })
 
     state.showForm.set(false)
   }
-
-  return state
 }
 
 function loadInitialCampaigns() {
-  WeiFund.contract.numCampaigns(function(err, result){
+  DaoFund.contract.numCampaigns(function(err, result){
     if (err) throw err
 
     var count = result.toNumber()
@@ -72,7 +63,7 @@ function loadInitialCampaigns() {
     count = (count > maxCount) ? maxCount : count
     for (var i = 0; i < count; i++) {
       var campaign = new Campaign({
-        contract: WeiFund.contract,
+        contract: DaoFund.contract,
         id: i,
       })
       campaignStore.push(campaign)
