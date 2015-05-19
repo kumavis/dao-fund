@@ -1,0 +1,111 @@
+/* kube overrides */
+
+.btn-outline:hover, input[type="submit"].btn-outline:hover {
+  border-color: rgba(0, 0, 0, 0.25);
+}
+.btn:hover, input[type="submit"].btn:hover {
+  color: initial;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* basics */
+
+body {
+  background: #2F2981;
+  padding-bottom: 60px;
+}
+
+table th {
+  border-color: #26103A;
+}
+
+table td {
+  border: none;
+}
+
+
+/* css as classes */
+
+.text-center {
+  text-align: center;
+}
+
+.inline {
+  display: inline;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+/* app */
+
+.app-header {
+  height: 120px;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: 0 0 12px 12px;
+  padding-top: 12px;
+  background: #FF695C;
+  color: #26103A;
+}
+
+.app-header button {
+  margin: 0 auto;
+  display: block;
+}
+
+.content-panel {
+  max-width: 700px;
+  margin: 0 auto;
+  border-radius: 4px;
+  margin-top: 48px;
+  background: #FFB347;
+}
+
+.campaign-header {
+  min-height: 52px;
+  padding: 4px 12px;
+  border-radius: 4px 4px 0px 0px;
+  background: #FF695C;
+  color: #26103A;
+}
+
+.campaign-header h2 {
+  float: left;
+  margin-top: 10px;
+}
+
+.campaign-header button {
+  float: right;
+  padding: 6px 12px;
+  margin-top: 4px;
+}
+
+.campaign-content {
+  padding: 4px 12px;
+  padding-bottom: 1px;
+  color: #26103A;
+}
+
+.content-panel progress {
+  width: 100%;
+}
+
+progress[value] {
+  /* Reset the default appearance */
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+progress[value]::-webkit-progress-value {
+  background: #BD4D8E;
+}
+
+/*
+#2F2981 dark blue
+#26103A blackish
+#BD4D8E magenta
+#FF695C ruby grapefruit
+#FFB347 Orangecreme
+*/
