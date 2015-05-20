@@ -29,10 +29,11 @@ function build(_, cb){
   console.log('build...')
   var b = browserify()
   b.add(path('index.js'))
-  b.bundle()
   b.transform(envify({
     CONTRACT_ADDR: '0xa2435fb420e9d7c1247da6ef7e14955ebe9ad6b9'
   }))
+  
+  b.bundle()
   .pipe(fs.createWriteStream(path('dist/index.js')))
   .on('finish', cb)
   .on('error', cb)
