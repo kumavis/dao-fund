@@ -28,7 +28,8 @@
     "publish": "node publish.js && gh-pages-deploy"
   },
   "gh-pages-deploy": {
-    "staticpath": "dist"
+    "staticpath": "dist",
+    "noprompt": true,
   },
   "repository": {
     "type": "git",
