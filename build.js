@@ -12,8 +12,8 @@ async.waterfall([
   prepare,
   build,
   copyHtml,
-  publish,
-  clean,
+  // publish,
+  // clean,
 ], function(err){
   if (err) throw err
   console.log('complete!')
@@ -48,15 +48,15 @@ function copyAssets(cb){
   ncp(path('assets/'), path('dist/assets/'), cb)
 }
 
-function publish(cb){
-  console.log('publish...')
-  ghpages.publish(path('dist'), cb)
-}
+// function publish(cb){
+//   console.log('publish...')
+//   ghpages.publish(path('dist'), cb)
+// }
 
-function clean(cb){
-  console.log('clean...')
-  rimraf(path('dist'), cb)
-}
+// function clean(cb){
+//   console.log('clean...')
+//   rimraf(path('dist'), cb)
+// }
 
 // util
 
