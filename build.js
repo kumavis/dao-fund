@@ -6,7 +6,7 @@ var pathJoin = require('path').join
 var async = require('async')
 var ncp = require('ncp').ncp
 var rimraf = require('rimraf')
-var envify = require('envify')
+var envify = require('envify/custom')
 
 
 async.waterfall([
