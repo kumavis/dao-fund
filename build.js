@@ -6,6 +6,7 @@ var pathJoin = require('path').join
 var async = require('async')
 var ncp = require('ncp').ncp
 var rimraf = require('rimraf')
+var envify = require('envify')
 
 
 async.waterfall([
@@ -29,6 +30,9 @@ function build(_, cb){
   var b = browserify()
   b.add(path('index.js'))
   b.bundle()
+  b.transform(envify({
+    CONTRACT_ADDR: '0xa2435fb420e9d7c1247da6ef7e14955ebe9ad6b9'
+  }))
   .pipe(fs.createWriteStream(path('dist/index.js')))
   .on('finish', cb)
   .on('error', cb)
