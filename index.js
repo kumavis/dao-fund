@@ -51,7 +51,6 @@ function App() {
       data.category,
       {
         from: web3.eth.accounts[0],
-        gas: 1e6,
         gasPrice: web3.eth.gasPrice,
       },
     function(){
