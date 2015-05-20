@@ -25,11 +25,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "beefy index.js --port 8000",
-    "publish": "node publish.js && gh-pages-deploy"
+    "publish": "node build.js && gh-pages-deploy"
   },
   "gh-pages-deploy": {
     "staticpath": "dist",
-    "noprompt": true,
+    "noprompt": true
   },
   "repository": {
     "type": "git",
