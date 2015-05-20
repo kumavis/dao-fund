@@ -103,14 +103,14 @@ DaoFund.abi = [{
   'inputs': [],
   'name': 'numCampaigns',
   'outputs': [{
-    'name': ',
+    'name': '',
     'type': 'uint256'
   }],
   'type': 'function'
 }, {
   'constant': true,
   'inputs': [{
-    'name': ',
+    'name': '',
     'type': 'address'
   }],
   'name': 'users',
@@ -211,7 +211,7 @@ DaoFund.deploy = function(cb){
   DaoFund.meta.new({
     data: DaoFund.hex,
     gas: 3000000,
-    from: web3.eth.addresses[0]
+    from: web3.eth.accounts[0]
   }, cb)
 }
 

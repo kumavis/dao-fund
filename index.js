@@ -4,12 +4,17 @@ var DaoFund = require('./dao-fund.js')
 var Campaign = require('./lib/campaign.js')
 var web3 = global.web3
 
-app = App()
-campaignStore = []
+var app = App()
+var campaignStore = []
 var newCampaign = null
 loadInitialCampaigns()
 
 hg.app(document.body, app, render)
+
+// debug
+global.DaoFund = DaoFund
+global.app = app
+global.campaignStore = campaignStore
 
 
 function App() {
@@ -27,6 +32,9 @@ function App() {
     newCampaign = new Campaign()
     state.newCampaign.set(newCampaign.state)
     state.showForm.set(true)
+    // empty all campaigns early so it looks intentional : P
+    // when we just load everything over again later
+    app.campaigns.set([])
   }
 
   function submitCampaign(state, event) {
@@ -43,14 +51,17 @@ function App() {
       data.category,
       {
         from: web3.eth.accounts[0],
-        gas: this.defaultGas,
+        gas: 1e6,
         gasPrice: web3.eth.gasPrice,
       },
     function(){
 
+      // im lazy
+      loadInitialCampaigns()
+      state.showForm.set(false)
+
     })
 
-    state.showForm.set(false)
   }
 }
 
@@ -59,7 +70,7 @@ function loadInitialCampaigns() {
     if (err) throw err
 
     var count = result.toNumber()
-    var maxCount = 10
+    var maxCount = 100
     count = (count > maxCount) ? maxCount : count
     for (var i = 0; i < count; i++) {
       var campaign = new Campaign({
