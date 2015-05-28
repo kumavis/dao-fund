@@ -56,8 +56,8 @@ function App() {
     function(){
 
       // im lazy
-      loadInitialCampaigns()
       state.showForm.set(false)
+      setTimeout(loadInitialCampaigns, 2000)
 
     })
 
