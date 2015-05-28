@@ -67,6 +67,7 @@ function App() {
 function loadInitialCampaigns() {
   DaoFund.contract.numCampaigns(function(err, result){
     if (err) throw err
+    if (typeof result === 'undefined') throw new Error('Bad contract address? '+DaoFund.address)
 
     var count = result.toNumber()
     var maxCount = 100
